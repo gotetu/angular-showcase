@@ -1,0 +1,14 @@
+<h1>ng-container要素</h1>
+<div>
+    <p>div要素を用いて構造化ディレクティブ（*ngFor、*ngIf）を利用すると、divタグそのものは残る。</p>
+    <div *ngFor='let color of colorArray'>
+        <span [style.background-color]="color">{{color}}</span>
+    </div>
+</div>
+<br/>
+<div>
+    <p>ng-container要素を用いて構造化ディレクティブ（*ngFor、*ngIf）を利用すると、ng-containerタグは残らない。</p>
+    <ng-container *ngFor='let color of this.colorArray'>
+        <span [style.background-color]="color">{{color}}</span>
+    </ng-container>
+</div>
