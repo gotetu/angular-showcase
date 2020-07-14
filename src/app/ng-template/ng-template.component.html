@@ -1,0 +1,8 @@
+<h1>ng-template要素</h1>
+状態に寄って、情報の表示方法を分けることができる。
+<div *ngIf="this.loaded; else loading">
+    Loaded.
+</div>
+<ng-template #loading>
+    <div>Loading...</div>
+</ng-template>
