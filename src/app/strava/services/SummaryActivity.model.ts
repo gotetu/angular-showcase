@@ -1,3 +1,4 @@
+
 interface MetaAthlete {
     id: number
 }
@@ -8,6 +9,13 @@ interface LatLng {
     lat: number
     lng: number
 }
+
+interface PolylineMap {
+    id: string	/* The identifier of the map */
+    polyline: string	/* The polyline of the map, only returned on detailed representation of an object */
+    summary_polyline: string	/* The summary polyline of the map */
+}
+
 interface SummaryActivity {
     id: number /* The unique identifier of the activity */
     external_id: string /* The identifier provided at upload time */
@@ -21,8 +29,8 @@ interface SummaryActivity {
     elev_high: number /* The activity's highest elevation, in meters */
     elev_low: number /* The activity's lowest elevation, in meters */
     type: ActivityType /* An instance of ActivityType. */
-    start_date: DateTime /* The time at which the activity was started. */
-    start_date_local: DateTime /* The time at which the activity was started in the local timezone. */
+    start_date: Date /* The time at which the activity was started. */
+    start_date_local: Date /* The time at which the activity was started in the local timezone. */
     timezone: string /* The timezone of the activity */
     start_latlng: LatLng /* An instance of LatLng. */
     end_latlng: LatLng /* An instance of LatLng. */
