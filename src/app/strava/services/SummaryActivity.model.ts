@@ -1,60 +1,63 @@
-
-interface MetaAthlete {
-    id: number
-}
-interface ActivityType {
-    id: number
-}
-interface LatLng {
-    lat: number
-    lng: number
-}
-
-interface PolylineMap {
-    id: string	/* The identifier of the map */
-    polyline: string	/* The polyline of the map, only returned on detailed representation of an object */
-    summary_polyline: string	/* The summary polyline of the map */
-}
-
 interface SummaryActivity {
-    id: number /* The unique identifier of the activity */
-    external_id: string /* The identifier provided at upload time */
-    upload_id: number /* The identifier of the upload that resulted in this activity */
-    athlete: MetaAthlete /* An instance of MetaAthlete. */
-    name: string /* The name of the activity */
-    distance: number /* The activity's distance, in meters */
-    moving_time: number /* The activity's moving time, in seconds */
-    elapsed_time: number /* The activity's elapsed time, in seconds */
-    total_elevation_gain: number /* The activity's total elevation gain. */
-    elev_high: number /* The activity's highest elevation, in meters */
-    elev_low: number /* The activity's lowest elevation, in meters */
-    type: ActivityType /* An instance of ActivityType. */
-    start_date: Date /* The time at which the activity was started. */
-    start_date_local: Date /* The time at which the activity was started in the local timezone. */
-    timezone: string /* The timezone of the activity */
-    start_latlng: LatLng /* An instance of LatLng. */
-    end_latlng: LatLng /* An instance of LatLng. */
-    achievement_count: number /* The number of achievements gained during this activity */
-    kudos_count: number /* The number of kudos given for this activity */
-    comment_count: number /* The number of comments for this activity */
-    athlete_count: number /* The number of athletes for taking part in a group activity */
-    photo_count: number /* The number of Instagram photos for this activity */
-    total_photo_count: number /* The number of Instagram and Strava photos for this activity */
-    map: PolylineMap /* An instance of PolylineMap. */
-    trainer: boolean /* Whether this activity was recorded on a training machine */
-    commute: boolean /* Whether this activity is a commute */
-    manual: boolean /* Whether this activity was created manually */
-    private: boolean /* Whether this activity is private */
-    flagged: boolean /* Whether this activity is flagged */
-    workout_type: number /* The activity's workout type */
-    upload_id_str: string /* The unique identifier of the upload in string format */
-    average_speed: number /* The activity's average speed, in meters per second */
-    max_speed: number /* The activity's max speed, in meters per second */
-    has_kudoed: boolean /* Whether the logged-in athlete has kudoed this activity */
-    gear_id: string /* The id of the gear for the activity */
-    kilojoules: number /* The total work done in kilojoules during this activity. Rides only */
-    average_watts: number /* Average power output in watts during this activity. Rides only */
-    device_watts: boolean /* Whether the watts are from a power meter, false if estimated */
-    max_watts: number /* Rides with power meter data only */
-    weighted_average_watts: number /* Similar to Normalized Power. Rides with power meter data only */
+    resource_state: number;
+    athlete: MetaAthlete;
+    name: string;
+    distance: number;
+    moving_time: number;
+    elapsed_time: number;
+    total_elevation_gain: number;
+    type: string;
+    workout_type?: number;
+    id: number;
+    external_id: string;
+    upload_id: number;
+    start_date: string;
+    start_date_local: string;
+    timezone: string;
+    utc_offset: number;
+    start_latlng: number[];
+    end_latlng: number[];
+    location_city?: any;
+    location_state?: any;
+    location_country: string;
+    start_latitude: number;
+    start_longitude: number;
+    achievement_count: number;
+    kudos_count: number;
+    comment_count: number;
+    athlete_count: number;
+    photo_count: number;
+    map: PolylineMap;
+    trainer: boolean;
+    commute: boolean;
+    manual: boolean;
+    private: boolean;
+    visibility: string;
+    flagged: boolean;
+    gear_id: string;
+    from_accepted_tag: boolean;
+    upload_id_str: string;
+    average_speed: number;
+    max_speed: number;
+    average_cadence: number;
+    average_temp: number;
+    has_heartrate: boolean;
+    average_heartrate: number;
+    max_heartrate: number;
+    heartrate_opt_out: boolean;
+    display_hide_heartrate_option: boolean;
+    elev_high: number;
+    elev_low: number;
+    pr_count: number;
+    total_photo_count: number;
+    has_kudoed: boolean;
+}
+interface PolylineMap {
+    id: string;
+    summary_polyline?: string;
+    resource_state: number;
+}  
+interface MetaAthlete {
+    id: number;
+    resource_state: number;
 }
