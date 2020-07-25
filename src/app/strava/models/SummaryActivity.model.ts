@@ -1,4 +1,4 @@
-interface SummaryActivity {
+export interface SummaryActivity {
     resource_state: number;
     athlete: MetaAthlete;
     name: string;
@@ -52,12 +52,12 @@ interface SummaryActivity {
     total_photo_count: number;
     has_kudoed: boolean;
 }
-interface PolylineMap {
+export interface PolylineMap {
     id: string;
     summary_polyline?: string;
     resource_state: number;
 }  
-interface MetaAthlete {
+export interface MetaAthlete {
     id: number;
     resource_state: number;
 }

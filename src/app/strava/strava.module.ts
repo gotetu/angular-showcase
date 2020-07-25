@@ -1,14 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StravaService } from './services/strava.service';
+import { SummaryActivityComponent } from './summary-activity/summary-activity.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    SummaryActivityComponent,
+  ],
   imports: [
-    CommonModule,
+    CommonModule
   ],
   exports: [
-    StravaService,
+    CommonModule,
+    SummaryActivityComponent,
   ]
 })
 export class StravaModule { }

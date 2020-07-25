@@ -4,17 +4,22 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { NgContainerComponent } from './ng-container/ng-container.component';
 import { NgTemplateComponent } from './ng-template/ng-template.component';
+import { StravaModule } from './strava/strava.module';
+import { StravaService } from './strava/services/strava.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     NgContainerComponent,
-    NgTemplateComponent
+    NgTemplateComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    StravaModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [StravaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

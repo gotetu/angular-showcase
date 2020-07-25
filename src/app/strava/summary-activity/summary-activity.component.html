@@ -1,0 +1,10 @@
+<table>
+    <tr>
+        <th>実施日</th>
+        <th>距離</th>
+    </tr>
+    <tr *ngFor="let activity of this.summary | async">
+        <td>{{activity.start_date | date:"yyyy/MM/dd HH:mm:ss"}}</td>
+        <td>{{(activity.distance / 1000).toFixed(2)}}km</td>
+    </tr>
+</table>
