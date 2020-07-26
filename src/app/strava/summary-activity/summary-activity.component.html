@@ -5,6 +5,6 @@
     </tr>
     <tr *ngFor="let activity of this.summary | async">
         <td>{{activity.start_date | date:"yyyy/MM/dd HH:mm:ss"}}</td>
-        <td>{{(activity.distance / 1000).toFixed(2)}}km</td>
+        <td>{{activity.distance | metric:"km"}}km</td>
     </tr>
 </table>
