@@ -2,9 +2,11 @@
     <tr>
         <th>実施日</th>
         <th>距離</th>
+        <th>時間</th>
     </tr>
     <tr *ngFor="let activity of this.summary | async">
         <td>{{activity.start_date | date:"yyyy/MM/dd HH:mm:ss"}}</td>
         <td>{{activity.distance | metric:"km"}}km</td>
+        <td>{{activity.moving_time |iso_time}}</td>
     </tr>
 </table>
