@@ -10,9 +10,9 @@ import {Color} from 'ng2-charts';
 export class BarChartComponent implements OnInit {
   public chartType = 'bar';
   public chartOptions = { };
-  public chartLabels = [];
+  public chartLabels = [''];
   public chartLegend = true;
-  public chartData = [];
+  public chartData = [{data: [1], label: ''} ];
   public colorData = [
     {backgroundColor: 'rgb(222, 22, 22)'},
     {backgroundColor: 'rgb(222, 22, 22)'},
