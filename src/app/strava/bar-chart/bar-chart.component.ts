@@ -55,11 +55,6 @@ export class BarChartComponent implements OnInit, AfterViewInit {
         options: this.chartOptions,
       });
     this.chart.update();
-/*
-    this.chart.chart.config.data.labels = this.chartLabels;
-    this.chart.chart.config.data.datasets = this.colorData;
-    this.chart.chart.update();
- */
   }
 
 }
