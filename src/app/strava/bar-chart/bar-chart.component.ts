@@ -33,17 +33,24 @@ export class BarChartComponent implements OnInit, AfterViewInit {
     this.strava.getSummaryActivity().subscribe(activities => {
       const dataAverageSpeed: any[] = [];
       const dataDistance: any[] = [];
+      const dataMobingTime: any[] = [];
       const labelAverageSpeed = 'average_speed';
       const labelDistance = 'distance';
+      const labelMovingTime = 'moving_time';
       for (const activity of activities) {
-        if (activity.type === 'Run' && activity.distance > 21000) {
+        // ランニングかつ距離がハーフ（21km〜22km）かつレースではないもの
+        if (activity.type === 'Run'
+          && activity.distance > 21000 && activity.distance < 22000
+          && activity.workout_type !== 1) {
           dataAverageSpeed.push(activity.average_speed);
           dataDistance.push(activity.distance);
+          dataMobingTime.push(activity.moving_time);
           this.chartLabels.push(activity.start_date_local);
         }
       }
       this.chartData.push({data: dataAverageSpeed, backgroundColor: 'rgb(222,22,22)', borderColor: 'rgb(222,22,22)', labelAverageSpeed});
-      this.chartData.push({data: dataDistance, backgroundColor: 'rgb(111,11,11)', borderColor: 'rgb(111,11,11)', labelDistance});
+//      this.chartData.push({data: dataDistance, backgroundColor: 'rgb(111,11,11)', borderColor: 'rgb(111,11,11)', labelDistance});
+      this.chartData.push({data: dataMobingTime, backgroundColor: 'rgb(333,33,33)', borderColor: 'rgb(333,33,33)', labelMovingTime});
     });
   }
 
