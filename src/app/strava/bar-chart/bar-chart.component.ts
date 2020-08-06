@@ -31,15 +31,19 @@ export class BarChartComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.strava.getSummaryActivity().subscribe(activities => {
-      const data: any[] = [];
-      const label = 'average_speed';
+      const dataAverageSpeed: any[] = [];
+      const dataDistance: any[] = [];
+      const labelAverageSpeed = 'average_speed';
+      const labelDistance = 'distance';
       for (const activity of activities) {
-        if (activity.type === 'Run') {
-          data.push(activity.average_speed);
+        if (activity.type === 'Run' && activity.distance > 21000) {
+          dataAverageSpeed.push(activity.average_speed);
+          dataDistance.push(activity.distance);
           this.chartLabels.push(activity.start_date_local);
         }
       }
-      this.chartData.push({data, backgroundColor: 'rgb(222,22,22)', borderColor: 'rgb(222,22,22)', label});
+      this.chartData.push({data: dataAverageSpeed, backgroundColor: 'rgb(222,22,22)', borderColor: 'rgb(222,22,22)', labelAverageSpeed});
+      this.chartData.push({data: dataDistance, backgroundColor: 'rgb(111,11,11)', borderColor: 'rgb(111,11,11)', labelDistance});
     });
   }
 
