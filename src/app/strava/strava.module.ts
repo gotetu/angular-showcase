@@ -6,6 +6,7 @@ import { IsoTimeConversionPipe } from './pipe/iso-time-conversion.pipe';
 import { SpeedConversionPipe } from './pipe/speed-conversion.pipe';
 import { BarChartComponent } from './bar-chart/bar-chart.component';
 import {ChartsModule} from 'ng2-charts';
+import { LineChartComponent } from './line-chart/line-chart.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import {ChartsModule} from 'ng2-charts';
     IsoTimeConversionPipe,
     SpeedConversionPipe,
     BarChartComponent,
+    LineChartComponent,
   ],
     imports: [
         CommonModule,
@@ -26,6 +28,7 @@ import {ChartsModule} from 'ng2-charts';
     IsoTimeConversionPipe,
     SpeedConversionPipe,
     BarChartComponent,
+    LineChartComponent,
   ]
 })
 export class StravaModule { }
