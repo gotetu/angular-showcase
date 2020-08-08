@@ -1,14 +1,14 @@
 import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {StravaService} from '../services/strava.service';
 import {Chart, ChartOptions} from 'chart.js';
+import {StravaService} from '../services/strava.service';
 
 @Component({
-  selector: 'app-bar-chart',
-  templateUrl: './bar-chart.component.html',
-  styleUrls: ['./bar-chart.component.css']
+  selector: 'app-mix-chart',
+  templateUrl: './mix-chart.component.html',
+  styleUrls: ['./mix-chart.component.css']
 })
-export class BarChartComponent implements OnInit, AfterViewInit {
-  @ViewChild('canvas') ref: ElementRef;
+export class MixChartComponent implements OnInit, AfterViewInit {
+  @ViewChild('mcanvas') ref: ElementRef;
   chart: Chart;
   public chartType = 'bar';
   public chartOptions: ChartOptions = {
@@ -49,6 +49,9 @@ export class BarChartComponent implements OnInit, AfterViewInit {
           this.chartLabels.push(activity.start_date_local);
         }
       }
+//      this.chartData.push({data: dataAverageSpeed, backgroundColor: 'rgb(222,22,22)', borderColor: 'rgb(222,22,22)', labelAverageSpeed});
+//      this.chartData.push({data: dataDistance, backgroundColor: 'rgb(111,11,11)', borderColor: 'rgb(111,11,11)', labelDistance});
+//      this.chartData.push({data: dataMobingTime, backgroundColor: 'rgb(333,33,33)', borderColor: 'rgb(333,33,33)', labelMovingTime});
     });
   }
 
@@ -64,12 +67,11 @@ export class BarChartComponent implements OnInit, AfterViewInit {
           datasets: [{
             label: 'average_speed',
             data: this.dataAverageSpeed,
+            type: 'line',
           }, {
             label: 'distance',
             data: this.dataDistance,
-          }, {
-            label: 'moving_time',
-            data: this.dataMobingTime,
+            type: 'bar',
           }],
           labels: this.chartLabels,
         },
