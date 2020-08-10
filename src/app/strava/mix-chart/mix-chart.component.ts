@@ -21,6 +21,17 @@ export class MixChartComponent implements OnInit, AfterViewInit {
       animationDuration: 0
     },
 //    sensitiveAnimationDuration: 0
+    scales: {
+      yAxes: [{
+        id: 'axis_average_speed',
+        type: 'linear',
+        position: 'left'
+      }, {
+        id: 'axis_distance',
+        type: 'linear',
+        position: 'right',
+      }]
+    }
   };
   public chartLabels = [];
   public chartLegend = true;
@@ -68,10 +79,12 @@ export class MixChartComponent implements OnInit, AfterViewInit {
             label: 'average_speed',
             data: this.dataAverageSpeed,
             type: 'line',
+            yAxisID: 'axis_average_speed',
           }, {
             label: 'distance',
             data: this.dataDistance,
             type: 'bar',
+            yAxisID: 'axis_distance',
           }],
           labels: this.chartLabels,
         },
