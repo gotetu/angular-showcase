@@ -20,10 +20,8 @@ export class BarChartComponent implements OnInit, AfterViewInit {
     hover: {
       animationDuration: 0
     },
-//    sensitiveAnimationDuration: 0
   };
   public chartLabels = [];
-  public chartLegend = true;
   public chartData = [];
   public colorData = [];
 
@@ -35,9 +33,6 @@ export class BarChartComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.strava.getSummaryActivity().subscribe(activities => {
-      const labelAverageSpeed = 'average_speed';
-      const labelDistance = 'distance';
-      const labelMovingTime = 'moving_time';
       for (const activity of activities) {
         // ランニングかつ距離がハーフ（21km〜22km）かつレースではないもの
         if (activity.type === 'Run'

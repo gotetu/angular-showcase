@@ -20,7 +20,6 @@ export class MixChartComponent implements OnInit, AfterViewInit {
     hover: {
       animationDuration: 0
     },
-//    sensitiveAnimationDuration: 0
     scales: {
       yAxes: [{
         id: 'axis_average_speed',
@@ -34,7 +33,6 @@ export class MixChartComponent implements OnInit, AfterViewInit {
     }
   };
   public chartLabels = [];
-  public chartLegend = true;
   public chartData = [];
   public colorData = [];
 
@@ -46,9 +44,6 @@ export class MixChartComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.strava.getSummaryActivity().subscribe(activities => {
-      const labelAverageSpeed = 'average_speed';
-      const labelDistance = 'distance';
-      const labelMovingTime = 'moving_time';
       for (const activity of activities) {
         // ランニングかつ距離がハーフ（21km〜22km）かつレースではないもの
         if (activity.type === 'Run'
@@ -60,9 +55,6 @@ export class MixChartComponent implements OnInit, AfterViewInit {
           this.chartLabels.push(activity.start_date_local);
         }
       }
-//      this.chartData.push({data: dataAverageSpeed, backgroundColor: 'rgb(222,22,22)', borderColor: 'rgb(222,22,22)', labelAverageSpeed});
-//      this.chartData.push({data: dataDistance, backgroundColor: 'rgb(111,11,11)', borderColor: 'rgb(111,11,11)', labelDistance});
-//      this.chartData.push({data: dataMobingTime, backgroundColor: 'rgb(333,33,33)', borderColor: 'rgb(333,33,33)', labelMovingTime});
     });
   }
 
