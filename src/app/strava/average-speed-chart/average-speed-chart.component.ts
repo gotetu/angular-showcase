@@ -54,6 +54,8 @@ export class AverageSpeedChartComponent implements OnInit, AfterViewInit {
           datasets: [{
             label: 'averge_speed',
             data: this.dataAverageSpeed,
+            fill: false,
+            showLine: false,
           }],
           labels: this.chartLabels,
         },
