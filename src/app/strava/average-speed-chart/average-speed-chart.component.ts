@@ -1,6 +1,7 @@
-import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Inject, LOCALE_ID, OnInit, ViewChild} from '@angular/core';
 import {Chart, ChartOptions} from 'chart.js';
 import {StravaService} from '../services/strava.service';
+import {formatDate} from '@angular/common';
 
 @Component({
   selector: 'app-average-speed-chart',
@@ -27,7 +28,8 @@ export class AverageSpeedChartComponent implements OnInit, AfterViewInit {
 
   public dataAverageSpeed: any[] = [];
 
-  constructor(private strava: StravaService) { }
+  constructor(private strava: StravaService,
+              @Inject(LOCALE_ID) private locale: string) { }
 
   ngOnInit(): void {
     this.strava.getSummaryActivity().subscribe(activities => {
@@ -37,7 +39,7 @@ export class AverageSpeedChartComponent implements OnInit, AfterViewInit {
           && activity.distance > 21000 && activity.distance < 22000
           && activity.workout_type !== 1) {
           this.dataAverageSpeed.push(activity.average_speed);
-          this.chartLabels.push(activity.start_date_local);
+          this.chartLabels.push(formatDate(activity.start_date_local, 'yyyy/MM/dd', this.locale));
         }
       }
     });
