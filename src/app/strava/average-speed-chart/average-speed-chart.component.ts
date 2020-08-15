@@ -33,7 +33,7 @@ export class AverageSpeedChartComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.strava.getSummaryActivity().subscribe(activities => {
-      for (const activity of activities) {
+      activities.reverse().forEach(activity => {
         // ランニングかつ距離がハーフ（21km〜22km）かつレースではないもの
         if (activity.type === 'Run'
           && activity.distance > 21000 && activity.distance < 22000
@@ -41,7 +41,7 @@ export class AverageSpeedChartComponent implements OnInit, AfterViewInit {
           this.dataAverageSpeed.push(activity.average_speed);
           this.chartLabels.push(formatDate(activity.start_date_local, 'yyyy/MM/dd', this.locale));
         }
-      }
+      });
     });
   }
   ngAfterViewInit(): void {
