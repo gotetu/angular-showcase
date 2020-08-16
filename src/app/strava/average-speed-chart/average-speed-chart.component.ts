@@ -56,6 +56,8 @@ export class AverageSpeedChartComponent implements OnInit, AfterViewInit {
           datasets: [{
             label: 'average_speed',
             data: this.dataAverageSpeed,
+            backgroundColor: 'rgba(13,212,238,0.1)',
+            borderColor: 'rgb(24,186,250)',
             fill: false,
             showLine: false,
           }],
