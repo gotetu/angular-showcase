@@ -21,6 +21,20 @@ export class AverageSpeedChartComponent implements OnInit, AfterViewInit {
     hover: {
       animationDuration: 0
     },
+    scales: {
+      yAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: 'average_speed(meter per seconds)',
+        }
+      }],
+      xAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: 'activity date',
+        }
+      }],
+    },
   };
   public chartLabels = [];
   public chartData = [];
