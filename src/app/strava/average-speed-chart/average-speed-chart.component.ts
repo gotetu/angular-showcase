@@ -43,9 +43,7 @@ export class AverageSpeedChartComponent implements OnInit, AfterViewInit {
   public dataAverageSpeed: any[] = [];
 
   constructor(private strava: StravaService,
-              @Inject(LOCALE_ID) private locale: string) { }
-
-  ngOnInit(): void {
+              @Inject(LOCALE_ID) private locale: string) {
     this.strava.getSummaryActivity().subscribe(activities => {
       activities.reverse().forEach(activity => {
         // ランニングかつ距離がハーフ（21km〜22km）かつレースではないもの
@@ -56,7 +54,14 @@ export class AverageSpeedChartComponent implements OnInit, AfterViewInit {
           this.chartLabels.push(formatDate(activity.start_date_local, 'yyyy/MM/dd', this.locale));
         }
       });
-    });
+    },
+      error => {},
+      () => {
+      this.chart.update();
+      });
+  }
+
+  ngOnInit(): void {
   }
   ngAfterViewInit(): void {
     const ctx = this.ref.nativeElement.getContext('2d');
@@ -79,7 +84,6 @@ export class AverageSpeedChartComponent implements OnInit, AfterViewInit {
         },
         options: this.chartOptions,
       });
-    this.chart.update();
   }
 
 }
